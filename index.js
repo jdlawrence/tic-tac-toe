@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  console.log('hiiiiii');
-
 
   var boardArr = [];
   for (var i = 0; i < 3; i++) {
@@ -11,18 +9,33 @@ $(document).ready(() => {
       boardArr[i].push([0]);
     }
   }
-  boardArr[1][1] = 234;
-  
-  var tableBody = '';
 
-  $.each(boardArr, function(k, v) {
-    var tableRow = '';
-    // console.log('this', k, v);
-    $.each(this, function(k, v) {
-      // console.log('something', something);
-      tableRow += `<td>${v}</td>`;
-    });
-    tableBody += `<tr>${tableRow}</tr>`;
+  render();
+
+  $('#renderButton').on('click', () => {
+    render();
   });
-  $('#app').append(tableBody);
+
+
+  function render() {
+    var tableBody = '';
+    $.each(boardArr, function (k, v) {
+      var tableRow = '';
+      $.each(this, function (k, v) {
+        tableRow += `<td>${v}</td>`;
+      });
+      tableBody += `<tr>${tableRow}</tr>`;
+    });
+    $('#app').html(tableBody);
+    $('td').click(function () {
+      var col = $(this).index();
+      var row = $(this).closest('tr').index();
+      boardArr[row][col]++;
+      // debugger;
+      render();
+      console.log('index', row, col);
+    });
+  }
+
+  // boardArr[1][1] = 234;
 });
