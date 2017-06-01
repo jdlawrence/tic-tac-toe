@@ -85,7 +85,7 @@ $(document).ready(() => {
     $.each(boardArr, function (k, v) {
       var tableRow = '';
       $.each(this, function (k, v) {
-        tableRow += `<td class="board">${v}</td>`;
+        tableRow += `<td class="column">${v}</td>`;
       });
       tableBody += `<tr class="">${tableRow}</tr>`;
     });
