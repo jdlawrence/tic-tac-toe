@@ -3,3 +3,10 @@
   width: 50px;
   height: 50px;
 }
+
+#app, #resetButton {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
